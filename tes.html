@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membuat Navbar</title>
+    <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="asset/img/logo.png" alt="logo bank sampah" width="150" height="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+                <li class="nav-item"><a class="nav-link" href="#produk">Type Sampah</a></li>
+                <li class="nav-item"><a class="nav-link" href="page/formulirpenjualan.html">Formulir</a></li>
+                <li class="nav-item"><a class="nav-link" href="page/kritik&saran.html">Kritik & Saran</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+
+  <!-- Welcome Section -->
+  <section class="welcome-section py-5 bg-light text-center" id="welcome">
+    <div class="container">
+        <h1>Welcome to!</h1>
+        <p class="mb-4">Bank Sampah</p>
+    </div>
+  </section>
+
+  <!-- Tentang Section -->
+  <section class="tentang-section py-5" id="tentang">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="asset/img/banksampah1.jpg" class="img-fluid rounded" alt="Tentang Bank Sampah">
+            </div>
+            <div class="col-md-6">
+                <h2 class="mb-4">Tentang Kami</h2>
+                <p>
+                    Bank Sampah Smash adalah pengelola sampah dengan cara mengumpulkan, memilah, dan mendaur ulang sampah untuk menghasilkan manfaat ekonomi dan lingkungan. Konsep utama dari bank sampah adalah agar masyarakat dapat menyetor sampah mereka, baik sampah organik maupun anorganik, untuk dipilah dan didaur ulang menjadi barang-barang bernilai.
+                </p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Produk Section -->
+  <section class="produk-section py-5 bg-light" id="produk">
+    <div class="container">
+        <h2 class="text-center mb-5">Type Sampah</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="asset/img/organik.jpg" class="card-img-top" alt="Sampah Organik">
+                    <div class="card-body">
+                        <h3 class="card-title">Sampah Organik</h3>
+                        <p class="card-text">
+                            Sampah organik adalah sampah yang berasal dari bahan-bahan alami atau makhluk hidup yang dapat terurai dengan cepat oleh mikroorganisme.
+                        </p>
+                        <a href="page/formulirpenjualan.html" class="btn btn-primary">Jual</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="asset/img/anorganik.jpg" class="card-img-top" alt="Sampah Anorganik">
+                    <div class="card-body">
+                        <h3 class="card-title">Sampah Anorganik</h3>
+                        <p class="card-text">
+                            Sampah anorganik adalah sampah yang terbuat dari bahan-bahan yang tidak mudah terurai dan tidak berasal dari makhluk hidup.
+                        </p>
+                        <a href="page/formulirpenjualan.html" class="btn btn-primary">Jual</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="asset/img/B3.jpg" class="card-img-top" alt="Sampah B3">
+                    <div class="card-body">
+                        <h3 class="card-title">Sampah B3</h3>
+                        <p class="card-text">
+                            Sampah B3 adalah jenis sampah yang mengandung bahan kimia atau zat berbahaya yang dapat membahayakan kesehatan manusia dan lingkungan.
+                        </p>
+                        <a href="page/formulirpenjualan.html" class="btn btn-primary">Jual</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <script src="asset/js/bootstrap.bundle.js"></script>
+</body>
+</html>

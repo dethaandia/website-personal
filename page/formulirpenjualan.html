@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Judul halaman -->
+    <title>Formulir Bank Sampah</title>
+    <link rel="stylesheet" href="../style.css">
+     <link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+  </head>
+  <body>
+
+    <!-- bagian untuk navbar -->
+    <nav class="navbar">
+      <div class="container">
+
+        <!-- logo -->
+        <div><img src="../asset/img/logo.png" alt="logo bank sampah" width="150" height="50"></div>
+        <ul class="menu">
+
+          <!-- Menu Navigasi -->
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../index.html#tentang">Tentang</a></li>
+          <li><a href="../index.html#produk">Type sampah</a></li>
+          <li><a href="#">Formulir</a></li>
+          <li><a href="../page/kritik&saran.html">Kritik&Saran</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Bagian formulir -->
+    <section class="contact-section" id="contact" style="margin-top: 80px;">
+        <div class="container">
+          <h2 class="text-center mb-4">Formulir Bank Sampah</h2>
+          <form action="" method="GET" class="contact-form" id="inp">
+
+            <!-- Input nama -->
+            <div class="mb-3">
+              <label for="name" class="form-label">Nama:</label>
+              <input type="text" id="name" name="name" class="form-control" required />
+            </div>
+
+            <!-- Input pilihan kelas  -->
+            <div class="mb-3">
+              <label for="class" class="form-label">Kelas:</label>
+              <select name="class" id="class" class="form-select" required>
+                <option value="">----</option>
+                <option value="X RPL A">X RPL A</option>
+                <option value="X RPL B">X RPL B</option>
+                <option value="XI RPL A">XI RPL A</option>
+                <option value="XI RPL B">XI RPL B</option>
+                <option value="XII RPL A">XII RPL A</option>
+              </select>
+            </div>
+
+            <!-- Pilihan tipe sampah -->
+            <div class="mb-3">
+              <label for="type" class="form-label">Tipe Sampah:</label>
+              <select name="type" id="type" class="form-select" required>
+                <option value="">----</option>
+                <option value="Organik">Organik</option>
+                <option value="Anorganik">Anorganik</option>
+                <option value="B3">B3</option>
+              </select>
+            </div>
+
+            <!-- Input jumlah sampah -->
+            <div class="mb-3">
+              <label for="amount" class="form-label">Jumlah Sampah:</label>
+              <input type="number" id="amount" name="amount" class="form-control" required />
+            </div>
+            
+            <!-- input harga per kg -->
+            <div class="mb-3">
+              <label for="price" class="form-label">Harga Sampah (per kg):</label>
+              <input type="number" id="price" name="price" class="form-control" required />
+            </div>
+
+            <!-- Tombol simpan -->
+            <button type="button" onclick="addData()" class="btn btn-primary">Simpan</button>
+          </form>
+          <hr style="margin-top: 50px" />
+          <h2 class="text-center">Penyimpanan Data</h2>
+
+          <!-- Tabel data yang sudah disimpan -->
+          <div class="table-responsive">
+            <table id="dataTable" class="table table-bordered">
+              <thead class="table-light">
+                <tr>
+                  <th>No</th>
+                  <th>Nama</th>
+                  <th>Kelas</th>
+                  <th>Tipe Sampah</th>
+                  <th>Jumlah Sampah</th>
+                  <th>Harga (per kg)</th>
+                  <th>Total Harga</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+
+          <!-- Tombol untuk menampilkan struk -->
+          <button type="submit" onclick="window.location.href='outputformulir.html'" class="btn btn-outline-secondary" style="margin-top: 30px;">Tampilkan Struk</button>
+        </div>
+      </section>
+  
+      <!-- Script Bootstrap dan JS tambahan -->
+      <script src="../asset/js/bootstrap.bundle.min.js"></script>
+      <script>
+        // Inisialisasi ketika halaman dimuat
+        window.onload = function () {
+          displayData();
+        };
+  
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+  
+        // Menambahkan data baru
+        function addData() {
+          const name = document.getElementById("name").value;
+          const className = document.getElementById("class").value;
+          const type = document.getElementById("type").value;
+          const amount = document.getElementById("amount").value;
+          const price = document.getElementById("price").value;
+  
+          if (name && className && type && amount && price) {
+            const totalPrice = amount * price;
+  
+            const newData = {
+              name,
+              class: className,
+              type,
+              amount,
+              price,
+              totalPrice,
+            };
+
+            // Menambahkan data ke array
+            users.push(newData);
+            localStorage.setItem("users", JSON.stringify(users));
+  
+            document.getElementById("inp").reset();
+            displayData();
+          } else {
+            alert("Harap isi semua data");
+          }
+        }
+  
+        // Menampilkan data yang sudah disimpan
+        function displayData() {
+          const tableBody = document.getElementById("tableBody");
+          tableBody.innerHTML = "";
+          users.forEach((user, index) => {
+            tableBody.innerHTML += `
+              <tr>
+                <td>${index + 1}</td>
+                <td>${user.name}</td>
+                <td>${user.class}</td>
+                <td>${user.type}</td>
+                <td>${user.amount}</td>
+                <td>${user.price}</td>
+                <td>${user.totalPrice}</td>
+                <td>
+                  <button onclick="editData(${index})" class="btn btn-warning btn-sm">Edit</button>
+                  <button onclick="deleteData(${index})" class="btn btn-danger btn-sm">Hapus</button>
+                </td>
+              </tr>
+            `;
+          });
+        }
+  
+        // Menghapus data
+        function deleteData(index) {
+          users.splice(index, 1);
+          localStorage.setItem("users", JSON.stringify(users));
+          displayData();
+        }
+  
+        // Mengedit data
+        function editData(index) {
+          const user = users[index];
+          document.getElementById("name").value = user.name;
+          document.getElementById("class").value = user.class;
+          document.getElementById("type").value = user.type;
+          document.getElementById("amount").value = user.amount;
+          document.getElementById("price").value = user.price;
+  
+          users.splice(index, 1);
+          localStorage.setItem("users", JSON.stringify(users));
+          displayData();
+        }
+      </script>
+    </body>
+  </html>
+  

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Judul Halaman -->
+    <title>Struk Data Bank Sampah</title>
+    <link rel="stylesheet" href="../asset/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <!-- bagian navbar -->
+    <nav class="navbar">
+        <div class="container">
+
+          <!-- Letak Logo -->
+          <div><img src="../asset/img/logo.png" alt="logo bank sampah" width="150" height="50"></div>
+          
+          <!-- Menu Navigasi -->
+          <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#tentang">Tentang</a></li>
+            <li><a href="../index.html#produk">Type sampah</a></li>
+            <li><a href="#">Formulir</a></li>
+            <li><a href="../page/">Kontak kami</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    <section class="contact-section" id="contact" style="margin-top: 80px;">
+
+      <!-- Judul halaman -->
+      <h2 class="text-center">Data Bank Sampah</h2>
+      <div class="container">
+        <div class="table-container">
+
+          <!--Tabel data  -->
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+
+                <!-- Hader tabel -->
+                <tr>
+                  <th>No</th>
+                  <th>Nama</th>
+                  <th>Kelas</th>
+                  <th>Tipe Sampah</th>
+                  <th>Jumlah Sampah</th>
+                  <th>Harga (per kg)</th>
+                  <th>Total Harga</th>
+                </tr>
+              </thead>
+
+              <!-- Data Tabel -->
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+
+          <!-- Tombol untuk menambahkan data dan memberikan kritik&saran -->
+          <div class="d-grid gap-2 d-md-block">
+            <button type="button" onclick="window.location.href='formulirpenjualan.html'" class="btn btn-outline-secondary">Tambahkan Data Bank Sampah</button>
+            <button type="button" onclick="window.location.href='kritik&saran.html'" class="btn btn-outline-secondary">Kasih Kritik & Saran</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="../asset/js/bootstrap.bundle.js"></script>
+    <script>
+      // Menampilkan data yang disimpan di localStorage
+      window.onload = function () {
+        const users = JSON.parse(localStorage.getItem("users"));
+        const tableBody = document.getElementById("tableBody");
+
+        if (users && users.length > 0) {
+
+          // Jika ada data,tambahkan ke
+          users.forEach((user, index) => {
+            tableBody.innerHTML += `
+              <tr>
+                <td>${index + 1}</td>
+                <td>${user.name}</td>
+                <td>${user.class}</td>
+                <td>${user.type}</td>
+                <td>${user.amount}</td>
+                <td>${user.price}</td>
+                <td>${user.totalPrice}</td>
+                <td>
+                  <button onclick="editData(${index})" class="btn btn-warning btn-sm">Edit</button>
+                  <button onclick="deleteData(${index})" class="btn btn-danger btn-sm">Hapus</button>
+                </td>
+              </tr>
+            `;
+          });
+        } else {
+          tableBody.innerHTML = "<tr><td colspan='8'>Data tidak ditemukan</td></tr>";
+        }
+      };
+    </script>
+  </body>
+</html>

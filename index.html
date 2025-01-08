@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Judul halaman -->
+    <title>Membuat Navbar</title>
+
+    <!-- Link ke stylesheet kustom dan Bootstrap -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+</head>
+<body>
+
+    <!-- Bagian Navbar -->
+  <nav class="navbar">
+    <div class="container">
+
+        <!-- Bagian logo -->
+        <div><img src="asset/img/logo.png" alt="logo bank sampah" width="150" height="50"></div>
+        
+        <!-- Menu Navigasi -->
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#produk">Type sampah</a></li>
+            <li><a href="page/formulirpenjualan.html">Formulir</a></li>
+            <li><a href="page/kritik&saran.html">kritik&saran</a></li>
+        </ul>
+
+        <!-- Tombol untuk tampilan responsif (menu dropdown di layar kecil) -->
+        <div class="tombol">&#9776;</div>
+    </div>
+  </nav>
+  <section class="welcome-section" id="welcome">
+    <div class="welcome-text">
+
+        <!-- Judul & deskripsi -->
+        <h1>Welcome to!</h1>
+        <p style="margin-bottom: 40px;">
+            Bank Sampah
+        </p>
+    </div>
+  </section>
+  <section class="tentang-section" id="tentang">
+    <div class="image-container">
+
+        <!-- Gambar penjelasan bagian Tentang -->
+        <img src="asset/img/banksampah1.jpg" alt="Deskripsi Gambar" />
+
+    </div>
+    <div class="text-container">
+
+        <!-- Deskripsi bagian tentang -->
+        <h2>Tentang kami</h2>
+        <p>
+            Bank Sampah Smash adalah pengelola sampah dengan cara mengumpulkan, memilah, dan mendaur ulang sampah untuk menghasilkan manfaat ekonomi dan lingkungan. Konsep utama dari bank sampah adalah agar masyarakat dapat menyetor sampah mereka, baik sampah organik maupun anorganik, untuk dipilah dan didaur ulang menjadi barang-barang bernilai.
+        </p>
+    </div>
+  </section>
+  <section class="produk-section" id="produk">
+
+    <!-- Judul Bagian Produk -->
+    <h2>Type Sampah</h2>
+    <div class="produk-container">
+
+        <!-- Opsi untuk sampah organik -->
+        <div class="produk-card">
+            <img src="asset/img/organik.jpg" alt="Produk 1"  />
+            <h3>Sampah Organik</h3>
+            <p>Sampah organik adalah sampah yang berasal dari bahan-bahan alami atau makhluk hidup yang dapat terurai dengan cepat oleh mikroorganisme. </p>
+            <a href="page/formulirpenjualan.html" class="btn-primary">Jual</a>
+        </div>
+
+        <!--Opsi untuk sampah Anorganik -->
+        <div class="produk-card">
+            <img src="asset/img/anorganik.jpg" alt="Produk 2" />
+            <h3>Sampah Anorganik</h3>
+            <p>Sampah anorganik adalah sampah yang terbuat dari bahan-bahan yang tidak mudah terurai dan tidak berasal dari makhluk hidup. Biasanya, sampah anorganik berasal dari bahan-bahan buatan manusia.</p>
+            <a href="page/formulirpenjualan.html" class="btn-primary">Jual</a>
+        </div>
+
+        <!-- Opsi untuk sampah B3 -->
+        <div class="produk-card">
+            <img src="asset/img/B3.jpg" alt="Produk 3" />
+            <h3>Sampah B3</h3>
+            <p>Sampah B3 adalah jenis sampah yang mengandung bahan kimia atau zat berbahaya yang dapat membahayakan kesehatan manusia dan lingkungan.</p>
+            <a href="page/formulirpenjualan.html" class="btn-primary">Jual</a>
+        </div>
+  </section>
+
+  <!-- script Bootstrap -->
+  <script src="asset/js/bootstrap.bundle.js"></script>
+  <script>
+    
+    // Pilih tombol dan menu navigasi
+        const tombol = document.querySelector(".tombol");
+        const menu = document.querySelector(".menu");
+    
+        tombol.addEventListener("click", () => {
+            menu.classList.toggle("aktif");
+        });
+      </script>
+</body>
+</html>
